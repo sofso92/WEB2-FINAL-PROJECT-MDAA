@@ -8,9 +8,6 @@ $posts_stmt->execute(array(':author_id' => $current_user_id));
 $posts = $posts_stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-
-
-
 <section class="dashboard">
     <?php if (isset($_SESSION['add-post-success'])) : // shows if add post was successful
     ?>
