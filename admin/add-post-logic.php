@@ -30,7 +30,7 @@ if (isset($_POST['submit'])) {
         $thumbnail_destination_path = '../images/' . $thumbnail_name;
 
         // make sure file is an image
-        $allowed_files = ['png', 'jpg', 'jpeg'];
+        $allowed_files = ['PNG','png', 'jpg', 'jpeg'];
         $extension = explode('.', $thumbnail_name);
         $extension = end($extension);
         if (in_array($extension, $allowed_files)) {

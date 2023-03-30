@@ -32,18 +32,18 @@
         <div class="container nav__container">
             <a href="<?= ROOT_URL ?>" class="nav__logo">MDAA</a>
             <ul class="nav__items">
-                <li><a href="<?= ROOT_URL ?>blog.php">Blog</a></li>
                 <li><a href="<?= ROOT_URL ?>about.php">About</a></li>
                 <li><a href="<?= ROOT_URL ?>services.php">Services</a></li>
                 <li><a href="<?= ROOT_URL ?>contact.php">Contact</a></li>
                 <li><a href="<?= ROOT_URL ?>signin.php">Sign in</a></li>
                 <?php if (isset($_SESSION['user-id'])) : ?>
+                    <li><a href="<?= ROOT_URL ?>blog.php">Blog</a></li>
                     <li class="nav__profile">
                         <div class="avatar">
                             <img src="<?= ROOT_URL . 'images/' . $avatar['avatar'] ?>">
                         </div>
                         <ul>
-                            <li><a href="<?= ROOT_URL ?>admin/dashboard.php">Dashboard</a></li>
+                            <li><a href="<?= ROOT_URL ?>admin/index.php">Dashboard</a></li>
                             <li><a href="<?= ROOT_URL ?>logout.php">Logout</a></li>
                         </ul>
                     </li>

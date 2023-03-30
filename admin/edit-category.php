@@ -7,14 +7,9 @@ if (isset($_GET['id'])) {
     // fetch category from database
     $query = "SELECT * FROM categories WHERE id=:id";
     $stmt = $pdo->prepare($query);
-    $stmt->bindValue(':id', $id, PDO::PARAM_INT);
-    $stmt->execute();
-    
-    $category = $stmt->fetch(PDO::FETCH_ASSOC);
-    
-    if (!$category) {
-        header('location: ' . ROOT_URL . 'admin/manage-categories');
-        die();
+    $stmt->execute(['id' => $id]);
+    if ($stmt->rowCount() == 1) {
+        $category = $stmt->fetch(PDO::FETCH_ASSOC);
     }
 } else {
     header('location: ' . ROOT_URL . 'admin/manage-categories');

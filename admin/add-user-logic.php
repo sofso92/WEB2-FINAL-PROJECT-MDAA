@@ -78,7 +78,7 @@ if (isset($_POST['submit']))
                 $avatar_destination_path = '../images/' . $avatar_name;
 
                 // make sure file is an image
-                $allowed_files = ['png', 'jpg', 'jpeg'];
+                $allowed_files = ['PNG','png', 'jpg', 'jpeg'];
                 $extention = explode('.', $avatar_name);
                 $extention = end($extention);
                 if (in_array($extention, $allowed_files)) {

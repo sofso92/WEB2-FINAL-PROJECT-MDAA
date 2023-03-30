@@ -22,7 +22,7 @@ unset($_SESSION['signup-data']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sign up</title>
     <!-- CUSTOM STYLESHEET -->
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="<?= ROOT_URL ?>css/style.css">
     <!-- ICONSCOUT CDN -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <!-- GOOGLE FONT (MONTSERRAT) -->
