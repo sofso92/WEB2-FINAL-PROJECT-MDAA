@@ -31,8 +31,6 @@ unset($_SESSION['signup-data']);
 </head>
 
 <body>
-
-
     <section class="form__section">
         <div class="container form__section-container">
             <h2>Sign Up</h2>
@@ -61,8 +59,5 @@ unset($_SESSION['signup-data']);
             </form>
         </div>
     </section>
-
-
 </body>
-
 </html>

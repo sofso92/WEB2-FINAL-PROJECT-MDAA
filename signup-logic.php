@@ -62,8 +62,10 @@
 
             // Execute the prepared statement
             $stmt->execute();
-            if ($stmt->rowCount() > 0) {
-                $_SESSION['signup'] = "Username or Email already exist";}
+            if ($stmt->rowCount() > 0) 
+            {
+                $_SESSION['signup'] = "Username or Email already exist";
+            }
             else 
             {
                 // WORK ON AVATAR
@@ -99,7 +101,8 @@
             $_SESSION['signup-data'] = $_POST;
             header('location: ' . ROOT_URL . 'signup.php');
             die();
-        } else 
+        } 
+        else 
         {
             // Prepare an SQL statement to insert a new user
             $insert_user_query = "INSERT INTO users (firstname, lastname, username, email, password, avatar, is_admin) VALUES (:firstname, :lastname, :username, :email, :password, :avatar_name, 0)";
