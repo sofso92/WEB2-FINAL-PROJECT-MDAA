@@ -48,7 +48,7 @@
                         </ul>
                     </li>
                 <?php else : ?>
-                    <li><a href="<?= ROOT_URL ?>signin.php">Signin</a></li>
+                    <li><a href="<?= ROOT_URL ?>signin.php">Logged Out</a></li>
                 <?php endif ?>
             </ul>
             <button id="open__nav-btn"><i class="uil uil-bars"></i></button>

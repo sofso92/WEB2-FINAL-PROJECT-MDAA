@@ -7,7 +7,6 @@ $password = $_SESSION['signin-data']['password'] ?? null;
 unset($_SESSION['signin-data']);
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
