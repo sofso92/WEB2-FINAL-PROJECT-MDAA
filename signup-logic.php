@@ -13,19 +13,32 @@
         $avatar = $_FILES['avatar'];
 
          // validate input values
-            if (!$firstname) {
+            if (!$firstname) 
+            {
                 $_SESSION['signup'] = "Please enter your First Name";
-            } elseif (!$lastname) {
+            } 
+            elseif (!$lastname)
+            {
                 $_SESSION['signup'] = "Please enter your Last Name";
-            } elseif (!$username) {
+            } 
+            elseif (!$username) 
+            {
                 $_SESSION['signup'] = "Please enter your Username";
-            } elseif (!$email) {
+            } 
+            elseif (!$email) 
+            {
                 $_SESSION['signup'] = "Please enter your a valid email";
-            } elseif (strlen($createpassword) < 8 || strlen($confirmpassword) < 8) {
+            }
+            elseif (strlen($createpassword) < 8 || strlen($confirmpassword) < 8)
+            {
                 $_SESSION['signup'] = "Password should be 8+ characters";
-            } elseif (!$avatar['name']) {
+            }
+            elseif (!$avatar['name']) 
+            {
                 $_SESSION['signup'] = "Please add avatar";
-            } else {
+            }
+            else 
+            {
             // check if passwords don't match
             if ($createpassword !== $confirmpassword) 
             {
@@ -37,12 +50,20 @@
             $hashed_password = password_hash($createpassword, PASSWORD_DEFAULT);
 
             // check if username or email already exist in database
-            $user_check_query = "SELECT * FROM users WHERE username='$username' OR email='$email'";
-            $user_check_result = mysqli_query($connection, $user_check_query);
-            if (mysqli_num_rows($user_check_result) > 0) 
-            {
-                $_SESSION['signup'] = "Username or Email already exist";
-            } 
+            $username = $_POST['username'];
+            $email = $_POST['email'];
+
+            // Prepare a parameterized SQL statement
+            $stmt = $pdo->prepare("SELECT * FROM users WHERE username=:username OR email=:email");
+
+            // Bind the parameters to the prepared statement
+            $stmt->bindParam(':username', $username);
+            $stmt->bindParam(':email', $email);
+
+            // Execute the prepared statement
+            $stmt->execute();
+            if ($stmt->rowCount() > 0) {
+                $_SESSION['signup'] = "Username or Email already exist";}
             else 
             {
                 // WORK ON AVATAR
@@ -71,25 +92,38 @@
         }
     }
 
-     // redirect back to signup pag eif there was any problem
-     if (isset($_SESSION['signup'])) {
-        // pass form data back to sigup page
-        $_SESSION['signup-data'] = $_POST;
-        header('location: ' . ROOT_URL . 'signup.php');
-        die();
-    } else {
-        // insert new user into users table
-        $insert_user_query = "INSERT INTO users SET firstname='$firstname', lastname='$lastname', username='$username', email='$email', password='$hashed_password', avatar='$avatar_name', is_admin=0";
-        $insert_user_result = mysqli_query($connection, $insert_user_query);
-
-        if (!mysqli_errno($connection)) {
-            // redirect to login page with success message
-            $_SESSION['signup-success'] = "Registration successful. Please log in";
-            header('location: ' . ROOT_URL . 'signin.php');
+        // redirect back to signup pag eif there was any problem
+        if (isset($_SESSION['signup'])) 
+        {
+            // pass form data back to sigup page
+            $_SESSION['signup-data'] = $_POST;
+            header('location: ' . ROOT_URL . 'signup.php');
             die();
-        }
-    }
+        } else 
+        {
+            // Prepare an SQL statement to insert a new user
+            $insert_user_query = "INSERT INTO users (firstname, lastname, username, email, password, avatar, is_admin) VALUES (:firstname, :lastname, :username, :email, :password, :avatar_name, 0)";
+            $stmt = $pdo->prepare($insert_user_query);
 
+            // Bind the parameters to the prepared statement
+            $stmt->bindParam(':firstname', $firstname);
+            $stmt->bindParam(':lastname', $lastname);
+            $stmt->bindParam(':username', $username);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':password', $hashed_password);
+            $stmt->bindParam(':avatar_name', $avatar_name);
+
+            // Execute the prepared statement
+            if ($stmt->execute()) 
+            {
+                // redirect to login page with success message
+                $_SESSION['signup-success'] = "Registration successful. Please log in";
+                header('location: ' . ROOT_URL . 'signin.php');
+                die();
+        
+            
+            }
+        }
     }
     else
     {

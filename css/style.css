@@ -113,7 +113,7 @@ nav
     position: fixed;
     top: 0;
     z-index: 10;
-    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2); */
 }
 
 nav button 
@@ -164,10 +164,10 @@ nav button
     right: 0;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 3rem 3rem rgba(0, 0, 0, 0.4);
+    /* box-shadow: 0 3rem 3rem rgba(0, 0, 0, 0.4); */
     visibility: hidden;
-    opacity: 0;
-    transition: var(--transition);
+    /* opacity: 0; */
+    /* transition: var(--transition); */
 }
 
 /* show nav ul when nav profile is hovered */
