@@ -1,3 +1,4 @@
+/* custom variables to reuse throughout project for easy maintainance and updating */
 :root {
     --color-primary: #6f6af8;
     --color-primary-light: hsl(242, 91%, 69%, 18%);
@@ -15,10 +16,13 @@
 
     --transition: all 300ms ease;
 
+    /* To define width of containers for medium and large screen sizes and forms */
     --container-width-lg: 74%;
     --container-width-md: 88%;
     --form-width: 40%;
 
+    /* Variables for different border-radius values to be used on card elements, allowing for a variety 
+    of rounded-corner styles. */
     --card-border-radius-1: 0.3rem;
     --card-border-radius-2: 0.5rem;
     --card-border-radius-3: 0.8rem;
@@ -28,7 +32,10 @@
 
 /* ============================================================================== GENERAL ================================================================================== */
 
-* {
+/* to remove any default margin, padding, outline, border, and appearance properties, as well as list-style and
+ text-decoration properties, from all elements. This creates a consistent, clean slate for styling the elements,
+  eliminating browser inconsistencies and making it easier to apply custom styles. */
+*{
     margin: 0;
     padding: 0;
     outline: 0;
@@ -39,62 +46,75 @@
     box-sizing: border-box;
 }
 
-body {
+body 
+{
     font-family: 'Montserrat', sans-serif;
+    /* controls the vertical space between lines of text, making the content more readable. */
     line-height: 1.6;
     color: var(--color-gray-200);
+    /* prevents the content from overflowing the viewport's width and creating horizontal scrollbars. */
     overflow-x: hidden;
     background: var(--color-bg);
     font-size: 0.9rem;
 }
 
-.container {
+.container 
+{
     width: var(--container-width-lg);
     max-width: 1800px;
+    /* automatically calculates equal left and right margins, effectively centering the container within its parent element or the viewport. */
     margin-inline: auto;
 }
 
-section {
+section 
+{
     margin-top: 3rem;
     width: 100vw;
 }
 
 /* add to posts on index if there's no featured post. eg. search results page*/
-/* ADDED AFTER TUTORIAL */
-.section__extra-margin {
+.section__extra-margin
+{
     margin-top: 7rem;
 }
 
-h1, h2, h3, h4, h5 {
+h1, h2, h3, h4, h5
+{
     color: var(--color-white);
     line-height: 1.3;
 }
 
-h1 {
+h1 
+{
     font-size: 3rem;
     margin: 1rem 0;
 }
 
-h2 {
+h2 
+{
     font-size: 1.7rem;
     margin: 1rem 0;
 }
 
-h3 {
+h3
+ {
     font-size: 1.1rem;
     margin: 0.8rem 0 0.5rem;
 }
 
-h4 {
+h4 
+{
     font-size: 1rem;
 }
 
-a {
+a 
+{
     color: var(--color-white);
     transition: var(--transition);
 }
 
-img {
+img 
+{
     display: block;
     width: 100%;
     object-fit: cover;
@@ -102,7 +122,8 @@ img {
 
 
 /* ============================================================================== NAV ================================================================================== */
-nav {
+nav 
+{
     background: var(--color-primary);
     width: 100vw;
     height: 4.5rem;
@@ -112,18 +133,21 @@ nav {
     box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
 }
 
-nav button {
+nav button 
+{
     display: none;
 }
 
-.nav__container {
+.nav__container 
+{
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.avatar {
+.avatar 
+{
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 50%;
@@ -131,23 +155,27 @@ nav button {
     border: 0.3rem solid var(--color-bg);
 }
 
-.nav__logo {
+.nav__logo
+{
     font-weight: 600;
     font-size: 1.2rem;
 }
 
-.nav__items {
+.nav__items 
+{
     display: flex;
     align-items: center;
     gap: 4rem;
 }
 
-.nav__profile {
+.nav__profile 
+{
     position: relative;
     cursor: pointer;
 }
 
-.nav__profile ul {
+.nav__profile ul 
+{
     position: absolute;
     top: 140%;
     right: 0;
@@ -160,25 +188,29 @@ nav button {
 }
 
 /* show nav ul when nav profile is hovered */
-.nav__profile:hover > ul {
+.nav__profile:hover > ul 
+{
     visibility: visible;
     opacity: 1;
 }
 
-.nav__profile ul li a {
+.nav__profile ul li a 
+{
     padding: 1rem;
     background: var(--color-gray-900);
     display: block;
     width: 100%;
 }
 
-.nav__profile ul li:last-child a {
+.nav__profile ul li:last-child a 
+{
     background: var(--color-red);
     color: var(--color-bg);
 }
 
 /* ============================================================================== CATEGORY BUTTON ================================================================================== */
-.category__button {
+.category__button 
+{
     background: var(--color-primary-light);
     color: var(--color-primary);
     display: inline-block;
@@ -189,30 +221,35 @@ nav button {
     text-align: center;
 }
 
-.category__button:hover {
+.category__button:hover 
+{
     color: var(--color-white);
 }
 
 /* ============================================================================== GENERAL POST ================================================================================== */
-.post__thumbnail {
+.post__thumbnail 
+{
     border-radius: var(--card-border-radius-5) 0;
     border: 1rem solid var(--color-gray-900);
     overflow: hidden;
     margin-bottom: 1.6rem;
 }
 
-.post:hover .post__thumbnail img {
+.post:hover .post__thumbnail img 
+{
     filter: saturate(0);
     transition: filter 500ms ease;
 }
 
-.post__author {
+.post__author 
+{
     display: flex;
     gap: 1rem;
     margin-top: 1.2rem;
 }
 
-.post__author-avatar {
+.post__author-avatar 
+{
     width: 2.5rem;
     height: 2.5rem;
     border-radius: var(--card-border-radius-3);
@@ -220,22 +257,26 @@ nav button {
 }
 
 /* ============================================================================== FEATURED ================================================================================== */
-.featured {
+.featured 
+{
     margin-top: 8rem;
 }
 
-.featured__container {
+.featured__container
+{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
 }
 
-.featured .post__thumbnail {
+.featured .post__thumbnail 
+{
     height: fit-content;
 }
 
 /* ============================================================================== POSTS ================================================================================== */
-.posts__container {
+.posts__container 
+{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 5rem;
@@ -243,13 +284,15 @@ nav button {
 }
 
 /* ============================================================================== CATEGORY BUTTONS ================================================================================== */
-.category__buttons {
+.category__buttons 
+{
     padding: 4rem 0;
     border-top: 2px solid var(--color-gray-900);
     border-bottom: 2px solid var(--color-gray-900);
 }
 
-.category__buttons-container {
+.category__buttons-container 
+{
     width: fit-content;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -257,13 +300,15 @@ nav button {
 }
 
 /* ============================================================================== FOOTER ================================================================================== */
-footer {
+footer 
+{
     background: var(--color-gray-900);
     padding: 5rem 0 0;
     box-shadow: inset 0 1.5rem 1.5rem rgba(0, 0, 0, 0.2);
 }
 
-.footer__socials {
+.footer__socials 
+{
     margin-inline: auto;
     width: fit-content;
     margin-bottom: 5rem;
@@ -273,7 +318,8 @@ footer {
     gap: 1.2rem;
 }
 
-.footer__socials a {
+.footer__socials a 
+{
     background: var(--color-bg);
     border-radius: 50%;
     width: 2.3rem;
@@ -283,12 +329,14 @@ footer {
     justify-content: center;
 }
 
-.footer__socials a:hover {
+.footer__socials a:hover 
+{
     background: var(--color-white);
     color: var(--color-bg);
 }
 
-.footer__container {
+.footer__container 
+{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 }
@@ -298,20 +346,24 @@ footer h4 {
     margin-bottom: 0.6rem;
 }
 
-footer ul li {
+footer ul li 
+{
     padding: 0.4rem 0;
 }
 
-footer ul a {
+footer ul a 
+{
     opacity: 0.75;
 }
 
-footer ul a:hover {
+footer ul a:hover 
+{
     letter-spacing: 0.2rem;
     opacity: 1;
 }
 
-.footer__copyright {
+.footer__copyright 
+{
     text-align: center;
     padding: 1.5rem 0;
     border-top: 2px solid var(--color-bg);
@@ -319,11 +371,13 @@ footer ul a:hover {
 }
 
 /* ============================================================================== SEARCH ================================================================================== */
-.search__bar {
+.search__bar 
+{
     margin-top: 7rem;
 }
 
-.search__bar-container {
+.search__bar-container 
+{
     position: relative;
     width: 30rem;
     background: var(--color-gray-900);
@@ -337,26 +391,30 @@ footer ul a:hover {
     color: var(--color-gray-300);
 }
 
-.search__bar-container > div {
+.search__bar-container > div 
+{
     width: 100%;
     display: flex;
     align-items: center;
 }
 
-.search__bar input {
+.search__bar input 
+{
     background: transparent;
     margin-left: 0.7rem;
     padding: 0.5rem 0;
     width: 100%;
 }
 
-.search__bar input::placeholder {
+.search__bar input::placeholder 
+{
     color: var(--color-gray-300);
 }
 
 
 /* ============================================================================== BUTTON ================================================================================== */
-.btn {
+.btn 
+{
     display: inline-block;
     width: fit-content;
     padding: 0.6rem 1.2rem;
@@ -367,16 +425,19 @@ footer ul a:hover {
     color: var(--color-white);
 }
 
-.btn.sm {
+.btn.sm 
+{
     padding: 0.3rem 0.7rem;
     font-size: 0.8rem;
 }
 
-.btn.danger {
+.btn.danger 
+{
     background: var(--color-red);
 }
 
-.btn:hover {
+.btn:hover 
+{
     background: var(--color-white);
     color: var(--color-bg);
 }
@@ -384,27 +445,32 @@ footer ul a:hover {
 
 
 /* ============================================================================== SINGLE POST ================================================================================== */
-.singlepost {
+.singlepost 
+{
     margin: 6rem 0 5rem;
 }
 
-.singlepost__container {
+.singlepost__container 
+{
     width: var(--form-width);
     background: var(--color-gray-900);
     padding: 1rem 2rem 5rem;
 }
 
-.singlepost__thumbnail {
+.singlepost__thumbnail 
+{
     margin: 1.5rem 0 1rem;
 }
 
-.singlepost__container p {
+.singlepost__container p 
+{
     margin-top: 0.6rem;
     line-height: 1.7;
 }
 
 /* ============================================================================== CATEGORY POSTS ================================================================================== */
-.category__title {
+.category__title 
+{
     height: 15rem;
     margin-top: 4.5rem;
     background: var(--color-gray-900);
@@ -413,40 +479,46 @@ footer ul a:hover {
 }
 
 /* ============================================================================== EMPTY PAGES ================================================================================== */
-.empty__page {
+.empty__page 
+{
     height: 70vh;
     display: grid;
     place-content: center;
 }
 
 /* ============================================================================== GENERAL FORM ================================================================================== */
-.form__section {
+.form__section 
+{
     display: grid;
     place-items: center;
     height: 100vh;
 }
 
-.form__section-container {
+.form__section-container 
+{
     width: var(--form-width);
 }
 
-.alert__message {
+.alert__message 
+{
     padding: 0.8rem 1.4rem;
     margin-bottom: 1rem;
     border-radius: var(--card-border-radius-2);
 }
 
-.alert__message.error {
+.alert__message.error 
+{
     background: var(--color-red-light);
     color: var(--color-red);
 }
 
-.alert__message.success {
+.alert__message.success 
+{
     background: var(--color-green-light);
     color: var(--color-green);
 }
+
 /* centers text of alert. eg. empty category-posts page*/
-/* ADDED AFTER TUTORIAL */
 .alert__message.lg {
     text-align: center;
 }
@@ -602,7 +674,7 @@ input, textarea, select {
         justify-content: center;
         gap: 0;
         display: none;
-        /* ADDED AFTER TUTORIAL */
+        
         perspective: 300px;
     }
 

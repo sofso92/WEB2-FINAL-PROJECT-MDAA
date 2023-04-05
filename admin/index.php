@@ -86,7 +86,7 @@ $posts = $posts_stmt->fetchAll(PDO::FETCH_ASSOC);
             </ul>
         </aside>
         <main>
-            <h2>Manage Users</h2>
+            <h2>Manage Content</h2>
             <?php if (!empty($posts)) : ?>
                 <table>
                     <thead>
