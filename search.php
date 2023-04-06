@@ -1,27 +1,25 @@
 <?php
-    require 'partials/header.php';
+require 'partials/header.php';
 
-    if (isset($_GET['search']) && isset($_GET['submit'])) {
-        $search = filter_var($_GET['search'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    
-        $query = "SELECT * FROM posts WHERE title LIKE :search ORDER BY date_time DESC";
-        $stmt = $pdo->prepare($query);
-        $stmt->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
-        $stmt->execute();
-    
-        $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    } else {
-        header('location: ' . ROOT_URL . 'blog.php');
-        die();
-    }
+if (isset($_GET['search']) && isset($_GET['submit'])) {
+    $search = filter_var($_GET['search'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+    $query = "SELECT * FROM posts WHERE title LIKE :search ORDER BY date_time DESC";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
+    $stmt->execute();
+
+    $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} else {
+    header('location: ' . ROOT_URL . 'blog.php');
+    die();
+}
 ?>
 
-<?php if (mysqli_num_rows($posts) > 0) :?>
+<?php if (!empty($posts)) : ?>
     <section class="posts section__extra-margin">
         <div class="container posts__container">
-            <?php
-            while ($post = $posts->fetch(PDO::FETCH_ASSOC)) :
-                ?>
+            <?php foreach ($posts as $post) : ?>
                 <article class="post">
                     <div class="post__thumbnail">
                         <img src="./images/<?= $post['thumbnail'] ?>">
@@ -63,7 +61,7 @@
                         </div>
                     </div>
                 </article>
-            <?php endwhile ?>
+            <?php endforeach ?>
         </div>
     </section>
 <?php else : ?>
@@ -71,6 +69,7 @@
         <p>No posts found for this search</p>
     </div>
 <?php endif ?>
+
 
 <section class="category__buttons">
     <div class="container category__buttons-container">
